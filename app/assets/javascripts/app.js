@@ -1,6 +1,6 @@
 
 $(document).on('click','.addFriend',function(){
-	let id = $(this).data('id');
+	var id = $(this).data('id');
 	
 	$.ajax({
 		url: '/addfriend',
@@ -15,7 +15,7 @@ $(document).on('click','.addFriend',function(){
 })
 
 $(document).on('click','.accept',function(){
-	let id = $(this).data('id');
+	var id = $(this).data('id');
 	$.ajax({
 		url: '/accept',
 		type: 'post',
