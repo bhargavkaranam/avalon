@@ -13,4 +13,16 @@ Rails.application.routes.draw do
   get '/user/profile', to: 'user#fetch'
 
   get '/profile/:id', to: 'user#test'
+
+  post 'addfriend', to: 'user#addfriend'
+
+  get 'images', to: 'user#showImages'
+
+  post 'images', to: 'user#uploadImages' 
+
+  get 'users', to: 'user#showAllUsers'
+
+  get 'notifications', to: 'user#notifications'
+
+  post 'accept', to: 'user#accept'
 end

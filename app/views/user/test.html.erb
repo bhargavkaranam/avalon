@@ -2,10 +2,26 @@
 <html>
 <head>
 	<title></title>
-	
+
 
 </head>
 <body>
+	<div class="modal fade" id="friendsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Info</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body friendsMessage">
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
 	<div class="container bootstrap snippets">
 		<div class="row">
 			<div class="col-lg-3 col-md-3 col-sm-4">
@@ -14,15 +30,17 @@
 						<div class="inner-all">
 							<ul class="list-unstyled">
 								<li class="text-center">
-									<img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="John Doe">
+									<img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="<%= @image %>" alt="John Doe">
 								</li>
 								<li class="text-center">
-									<h4 class="text-capitalize">John Doe</h4>
-									<p class="text-muted text-capitalize">web designer</p>
+									<h4 class="text-capitalize"><%= @name %></h4>
+									<p class="text-muted text-capitalize">Web Designer</p>
 								</li>
+								<% if (session[:id] != Integer(params[:id])) %>
 								<li>
-									<a class="btn btn-success text-center btn-block addFriend">ADD FRIEND</a>
+									<a data-id=<%= params[:id] %> class="btn btn-success text-center btn-block addFriend">ADD FRIEND</a>
 								</li>
+								<% end %>
 								<li><br></li>
 								<li>
 									<div class="btn-group-vertical btn-block">
@@ -34,7 +52,7 @@
 						</div>
 					</div>
 				</div><!-- /.panel -->
-
+				<% if (@is_friends) || (session[:id] == Integer(params[:id])) %>
 				<div class="panel panel-theme rounded shadow">
 					<div class="panel-heading">
 						<div class="pull-left">
@@ -55,8 +73,9 @@
 						</ul>
 					</div><!-- /.panel-body -->
 				</div><!-- /.panel -->
-
+			  <% end %>
 			</div>
+			
 			<div class="col-lg-9 col-md-9 col-sm-8">
 
 				<div class="profile-cover">
@@ -87,6 +106,7 @@
 					</div><!-- /.cover -->
 				</div><!-- /.profile-cover -->
 				<div class="divider"></div>
+				<% if (@is_friends) || (session[:id] == Integer(params[:id])) %>
 				<div class="panel rounded shadow">
 					<form action="...">
 						<textarea class="form-control input-lg no-border" rows="2" placeholder="What are you doing?..."></textarea>
@@ -226,8 +246,10 @@
 							</div><!-- /.panel-footer -->
 						</div><!-- /.panel -->
 					</div>
+					<% end %>
 				</div>
 			</div>
+			
 		</div>
 	</div>
 </body>

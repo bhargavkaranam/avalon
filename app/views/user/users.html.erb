@@ -1,0 +1,35 @@
+<style>
+.table
+	{
+		width: 50% !important;
+		
+		margin: 0px auto;
+		float: none;
+	}
+</style>
+<%= render :template => "/user/nav" %>
+
+<div class="allUsers">
+	
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			
+			<% @all.each do |u| %>
+			
+			
+			<tr>
+				<td><%= u.name %></td>
+				<td><%= u.email %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</div>

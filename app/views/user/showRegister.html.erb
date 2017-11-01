@@ -20,18 +20,24 @@
 					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Login</a>
+					<a class="nav-link" href="/login">Login</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/register">Register</a>
 				</li>
 
 			</div>
 		</nav>
 		<div class="wrapper">
-			<form class="form-signin" method="post" action="/register">       
+			<form class="form-signin" method="post" action="/register" enctype="multipart/form-data">       
 				<h2 class="form-signin-heading">Please register</h2>
+
 				<input type="text" class="form-control" name="user[name]" placeholder="Full Name" required="" autofocus="" />
 				<input type="email" class="form-control" name="user[email]" placeholder="Email Address" required="" autofocus="" />
 				<input type="password" class="form-control" name="user[password]" placeholder="Password" required=""/>      
-				<input type="number" class="form-control" name="user[age]" placeholder="Age" required=""/>      
+				<input type="number" class="form-control" name="user[age]" placeholder="Age" required=""/>     
+				<input type="file" class="form-control-file" name="user[image]" id="exampleFormControlFile1">
+				<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>  
 				<label class="checkbox">
 					<input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
 				</label>

@@ -1,0 +1,33 @@
+<style type="text/css">
+form
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 600px;
+}
+.image
+{
+	height: 400px;
+	width: 400px;
+	float: left;
+	margin-right: 25px;
+	margin-bottom: 20px;
+}
+</style>
+<%= render :template => "/user/nav" %>
+
+<form enctype="multipart/form-data" method="post" action="/images">
+	<div class="form-group">
+		<input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+	</div>
+	<div class="form-group">
+		<input class="form-control" type="submit" name="submit" value="Submit">
+	</div>
+	<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %> 
+</form>
+<div class="allImages">
+	<% @images.each do |i| %>
+		<img class="image" src=<%= i.url %> />
+	<% end %>
+</div>
