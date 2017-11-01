@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   get 'notifications', to: 'user#notifications'
 
   post 'accept', to: 'user#accept'
+
+  get 'logout', to: 'user#logout'
 end

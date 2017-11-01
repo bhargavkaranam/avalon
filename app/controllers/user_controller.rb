@@ -23,7 +23,7 @@ class UserController < ApplicationController
 			session[:email] = params[:user][:email]
 			session[:id] = authenticated[:id]
 			
-			redirect_to '/profile'
+			redirect_to '/profile/' + session[:id].to_s
 		else
 			redirect_to '/login'
 		end
@@ -31,6 +31,9 @@ class UserController < ApplicationController
 
 
 	def profile
+		if !session[:email]
+			redirect_to '/login'
+		end
 		@results = User.find_by(email: session[:email])
 		if !session[:email]
 			puts "Not logged in"
@@ -123,6 +126,11 @@ class UserController < ApplicationController
 		user.save
 		msg = {status: true}
 		render :json => msg
+	end
+
+	def logout
+		reset_session
+		redirect_to '/login'
 	end
 
 	private

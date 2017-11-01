@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20171101034808) do
 
-  create_table "friends", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "friends", force: :cascade do |t|
     t.integer "fid1"
     t.integer "fid2"
     t.boolean "accepted"
@@ -20,18 +23,19 @@ ActiveRecord::Schema.define(version: 20171101034808) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "images", force: :cascade do |t|
     t.integer "uid"
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password"
     t.string "name"
     t.integer "age"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
