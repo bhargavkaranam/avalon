@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= session[:email] %></title>
+	<style type="text/css">
+	.table
+	{
+		width: 50% !important;
+
+		margin: 0px auto;
+		float: none;
+	}
+</style>
+</head>
+<body>
+	<%= render :template => "/user/nav" %>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Name</td>
+				<td><%= @results.name %></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><%= @results.email %></td>
+			</tr>
+			<tr>
+				<td>Age</td>
+				<td><%= @results.age %></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+<script>
+	
+</script>
+</html>
